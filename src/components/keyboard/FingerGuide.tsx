@@ -57,8 +57,9 @@ const FingerGuide: React.FC<FingerGuideProps> = ({ nextKey }) => {
   return (
     <div className="flex justify-center items-center w-full max-w-lg h-36 mx-auto mt-6">
       <div className="flex justify-center items-end space-x-6">
-        {" "}
-        <Hand isLeft /> <Thumb /> <Hand isRight />{" "}
+        <Hand isLeft={true} />
+        <Thumb />
+        <Hand isLeft={false} />
       </div>
     </div>
   );

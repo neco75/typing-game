@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // framer-motionをインポート
+// Transition 型をインポート
+import { motion, AnimatePresence, Transition } from "framer-motion";
 import ConfigScreen, { GameConfig } from "@/components/game/ConfigScreen";
 import GameScreen from "@/components/game/GameScreen";
 import ResultScreen, { GameResults } from "@/components/game/ResultScreen";
@@ -39,19 +40,19 @@ export default function Home() {
   };
 
   const handleConfig = () => {
-    setResults(null); // 結果をリセット
-    setConfig(null); // 設定をリセット
+    setResults(null);
+    setConfig(null);
     setGameState("config");
   };
 
-  // アニメーションの定義
   const pageVariants = {
     initial: { opacity: 0, x: -50 },
     in: { opacity: 1, x: 0 },
     out: { opacity: 0, x: 50 },
   };
 
-  const pageTransition = {
+  // pageTransitionオブジェクトにTransition型を明示的に指定
+  const pageTransition: Transition = {
     type: "tween",
     ease: "anticipate",
     duration: 0.5,
