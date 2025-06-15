@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# English Typing Game
 
-## Getting Started
+## 概要 (Overview)
 
-First, run the development server:
+これは、英語学習とブラインドタッチ習得を同時に行うことを目的としたタイピングゲームです。リスニング能力と正しい運指（指の使いかた）の向上もサポートします。Next.js を使用して構築されています。
+
+## 主な機能 (Features)
+
+- **豊富な問題カテゴリ**: 「日常会話」「ビジネス」「TOEIC 風」の 3 つのジャンルから問題を選択できます。
+- **音声読み上げ**: 問題文はネイティブな発音で読み上げられ、リスニング能力を鍛えます。
+  - **Google Cloud Text-to-Speech** を利用した高品質な音声（API キー設定時）。
+  - 読み上げ速度と声の性別（男性/女性）を調整可能。
+- **運指ガイド**: 次に打つべきキーと、それに対応する指を視覚的に表示し、正しいタイピングフォームの習得を助けます。
+- **リアルタイムフィードバック**:
+  - 正解・不正解時にそれぞれ異なる効果音が鳴ります。
+  - 滑らかな画面遷移アニメーションによる快適な UI/UX。
+- **詳細な結果表示**:
+  - **スコア**: 速さと正確性を考慮した総合的な得点。
+  - **KPM (Keys Per Minute)**: 1 分間あたりのキー入力数。
+  - **正確性 (%)**: タイプミスの少なさ。
+  - ミスしたキーの一覧。
+
+## 使用技術 (Tech Stack)
+
+- **フレームワーク**: [Next.js](https://nextjs.org/)
+- **言語**: [TypeScript](https://www.typescriptlang.org/)
+- **UI**: [React](https://reactjs.org/), [Tailwind CSS](https://tailwindcss.com/)
+- **アニメーション**: [Framer Motion](https://www.framer.com/motion/)
+- **音声合成**: [Google Cloud Text-to-Speech API](https://cloud.google.com/text-to-speech) / Web Speech API
+
+## ローカルでの起動方法 (Getting Started)
+
+### 1. 前提条件
+
+- [Node.js](https://nodejs.org/) (v18.17.0 以上)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+
+### 2. プロジェクトのクローン
+
+```bash
+git clone [リポジトリのURL]
+cd [プロジェクト名]
+```
+
+### 3. 依存パッケージのインストール
+
+```bash
+npm install
+```
+
+### 4. 環境変数の設定
+
+プロジェクトのルートディレクトリに .env.local という名前のファイルを作成し、Google Cloud Text-to-Speech API のキーを設定します。
+
+```bash
+NEXT_PUBLIC_GOOGLE_API_KEY=YOUR_API_KEY
+```
+
+※API キーを設定しない場合でも、ブラウザ標準の音声合成機能でアプリケーションは動作します。ブラウザ標準の音声合成機能を使用する場合、性別の切り替えができません。
+
+### 5. 開発サーバーの起動
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ブラウザで http://localhost:3000 を開くと、アプリケーションが表示されます。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+※Gemini AI で作成
