@@ -23,7 +23,7 @@ const ResultScreen: React.FC<ResultScreenProps> = ({
     ([, a], [, b]) => b - a
   );
   return (
-    <div className="w-full max-w-lg mx-auto p-8 bg-gray-800 rounded-xl shadow-lg text-white">
+    <div className="w-full max-w-xl mx-auto p-8 bg-gray-800 rounded-xl shadow-lg text-white border border-gray-700">
       <h1 className="text-4xl font-bold text-center text-cyan-400 mb-4">
         結果
       </h1>
