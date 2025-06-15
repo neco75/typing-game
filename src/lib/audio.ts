@@ -72,6 +72,7 @@ export const speak = async (
 // AudioContextを一度だけ生成して共有する
 let audioContext: AudioContext | null = null;
 if (typeof window !== "undefined") {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   audioContext = new (window.AudioContext ||
     (window as any).webkitAudioContext)();
 }
