@@ -7,9 +7,7 @@ export const speak = async (
   const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
 
   if (!apiKey) {
-    console.warn(
-      "APIキーが設定されていません。ブラウザの音声合成機能で代用します。"
-    );
+    // ブラウザの音声合成機能で代用
     if ("speechSynthesis" in window) {
       const utterance = new SpeechSynthesisUtterance(text);
       utterance.lang = "en-US";
@@ -42,6 +40,7 @@ export const speak = async (
     return;
   }
 
+  // Google Cloud API呼び出しロジック
   const API_ENDPOINT = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
   const payload = {
     input: { text },
@@ -69,12 +68,20 @@ export const speak = async (
     alert("音声の生成に失敗しました。APIキーや設定を確認してください。");
   }
 };
+
+// --- 効果音の修正 ---
+
 // AudioContextを一度だけ生成して共有する
 let audioContext: AudioContext | null = null;
 if (typeof window !== "undefined") {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  audioContext = new (window.AudioContext ||
-    (window as any).webkitAudioContext)();
+  const AudioContextClass =
+    window.AudioContext ||
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (window as any).webkitAudioContext;
+
+  if (AudioContextClass) {
+    audioContext = new AudioContextClass();
+  }
 }
 
 // 汎用的なサウンドプレイヤー
